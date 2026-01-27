@@ -1,0 +1,8 @@
+lets take input = 'ab'
+we need to produce output having length 2 of each letter
+Let's say each letter is length '3' then these letters
+have to be placed in slate of size 3, how many combinations
+are there:  C(3,2) = 3 
+How this happen:
+a=123
+-- => 12,   
