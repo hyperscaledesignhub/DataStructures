@@ -7,6 +7,12 @@ def combination_sum(sum_values:list[int],target:int):
         #Base case-1
         if target < 0:
             return
+        if target == 0:
+            result.append(slate[:])
+            return
+        if i == len(sum_values):
+            return
+        
         
         
         #Recursive case
