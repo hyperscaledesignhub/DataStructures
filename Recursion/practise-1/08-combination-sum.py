@@ -4,12 +4,16 @@ def combination_sum(sum_values:list[int],target:int):
     sum_values.sort()
     
     def helper(i:int,target:int,slate:list[int]):
-        #Base case-1
+        #Base case-1, if the given target <0 return
         if target < 0:
             return
+        #Base case-2, if the target is equal to zero, then 
+        # append the result to slate
         if target == 0:
             result.append(slate[:])
             return
+        #If the number of elements denoted by index 'i'
+        # equal to length of input the return 
         if i == len(sum_values):
             return
         
