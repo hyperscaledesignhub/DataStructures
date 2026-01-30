@@ -1,0 +1,30 @@
+This is how combination sum works
+ In this problem we are going to write how many combinations 
+ are present in a set where there are repetetion of elements 
+ are there.
+
+ Here first we are checking that elements are repeated or not. After
+ we are counting them how many times they are repeated.
+ 
+ Next we are keeping over slate only those many number of 
+ elements whose sum is less than the target 
+
+ Otherwise if we keep elements whose overall sum is greater than
+ than the target then there is no use. 
+ 
+ After that we are adding that value to slate and calling
+ the subordinate to fill remaining elements of the slate
+
+ Here we are not using include/exclude principle becuase this
+ is not subsets whose sum equal to target. This is to find
+ overall combination of elements whose sum is equal to target
+
+ Hence only one subordinate we are calling to fill the remaining
+ elements of the slate.
+
+ After that handle base cases
+
+ 1st case: When the target value ==0 we got the result, add to slate
+ 2nd base case:  When the slate length equals to the length of array
+ 3rd base case: When the index value reaches the length of the target
+ 
