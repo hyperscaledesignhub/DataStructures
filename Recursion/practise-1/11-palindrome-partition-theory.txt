@@ -82,11 +82,65 @@ How we are acheiving it?
      when i reaches 5, that means it already covered subordinates from 
      0 to 4, all are covered. Hence it adds this result to the
      final result object
-    now 5th subordinate removes the element it added. and 
-    Now th one removes a from slate and slate,
-    it has done because it runs from str(len)-1 to str(len)
-    Now slate has a,a,b,a
-    Now 3rd subordinate, 
+    now 5th subordinate removes the element it added. and now slate has:
+    a,a,b,a
+    Now 4th subordinate at 4th element b, it removes it from slate 
+    now slate has a,a,b,
+    Now 4th subordinate adds to slate chars from 4to6: that means, it adds, aa
+    Now slate has the following: a,a,b,aa. And 4th subordinate passes i value 5
+    Now aa is palindrome and hence its allowed, and now i value is 
+    5, and this is added to the result
+    Now stack returns at 4th subordinate. it removes the aa. Now slate has:
+    a,a,b.
+    Now call is at 3rd subordinate:
+    now 3rd subordinate at starts at b, and hence removes the elemnt it added, back
+    now slate is  a,a
+    Now 3rd subordinate starts at i value is at 2,but pick is at 3, so that
+    it adds from i to pick, length 2 element, which is
+    ba, now it calls subordinate, by passing i+1  value ( i value never change here) 
+    only pick value change. 
+    New subordinate has i = 4, slate = a,a,ba 
+    Since ba is not a palindrome, its returned back 
+    now 3rd subordinate removes it from slate, 
+    slate is  a,a
+    now 3rd subordinate pick is 4, i is 2, so element form i to pick is added to slate
+    a,a,baa  added, now again calls the subordinate, this subordinate again
+    returns back since baa is not a palindrome and this is removed from the slate
+    now slate is a,a now pick is 5 and it returns back
+
+    Now 2nd subordinate removes second a that is added to the slate.
+    slate = a
+    now i is at 1, pick is at 2,
+    so element between i and pick are added to slate, 
+    slate = [a,ab], calls the subordinate with i value = 2.
+    since ab is not a palindrome, it returns back
+    Now [a,aba] added pick is 3, 
+    it calls the 3rd subordinate with pick  value = pick+1 = 4
+    since aba is palindrome it passes through, 
+    since i not equal to length of the string, it calls the new subordinate i value 4 
+    remember 2nd subordinate added elements from i->1 to pick->3; Now it calls subordinate t0
+    start from pick+1 make sense.
+    3rd subordinate i at 4, now it adds i to the slate
+    [a,aba,a], not it calls 4th subordinate with i value 5 ( pick+1)
+    Since last element is a palindrome its moves to enxt level, where slate length i 
+    is 5 lenght of string hence its added to result and comes back to 3rd subordinate 
+    again 3rd one removes a from slate and returns to 2nd one
+    now slate is a,aba; now second one removes aba from slate, and  slate is having a
+    slate =a 
+    now pick is at 4, i = 1 to 4 added to slate, abaa 
+    slate = [a, abaa ]
+    now calls subordinate with i = pick+1 =5, since abaa is not a palindrome it returns back 
+    and this subordinate removes element from the bottom and returns to 1st subrodiante since pick
+    value is 5 lenght of string
+    now slate is having a(istone) again first subordinate removes it, 
+    its i = 0, pick =1
+    now adds element ab to slate
+    slate = [ab] now again same thing repeats 
+
+
+
+
+   
 
     
 
