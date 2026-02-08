@@ -43,4 +43,51 @@ See i am going to add the value that i have received from my manager
 in the begining, if last value that my manager added is not a palindrome 
 
 i return back.  
-If i value of my manager equal to lenght of the string then i add 
+If i value of my manager equal to lenght of the string then i add
+
+This is what i understood overall palinfrom paritions
+
+We need to break the string such that its a palindrome. for ex:
+Given the string aabaa, 
+we can break the string at  a, a,b,a,a  all single characters such that each of the
+character is a palindrome
+We can break at [aa,b, aa]  such that each of them is a palindrome
+That means we have to break the whole string at multiple places. so that there 
+are multiple substrings and each of the substring is a palindrome. Ok that means
+we need to break until we cover entire string length
+This is why it is making the check there i == len(str) then append the slate to the result
+
+How we are acheiving it?
+
+1. we are defining multiple subordinates:
+    1st one starting at 0 to len(str), 2nd one 1 to len(str), .. last one [len(str) -1 to len(str)]
+
+    ist one appended to slate a, calls 2nd one -> it appends a( second char) , 
+    3rd one appends to slate (b), 4th one slate(a), 5th one slate(a)
+
+    One more thing each time a new subordinate is called 
+    if old subordinate is already added something to slate,
+    it is checked whether its a palindrome. 
+    If its a palindrome then only it allows this new subordinate call
+    to be executed.
+    If it is not a palindrome, then newsubordinate call is now allowed
+
+    In our first case, all single letters added to slate by each
+    subordinate is a palindrome. Hence all of them are added to slate
+
+    Also remember, this slate is a list[str], not a string.
+    Thats why we are checking in the begining str[-1] as a palindrome
+
+    See in aabaa, there are 5 characters. So 5 subordinates are called
+     when i reaches 5, that means it already covered subordinates from 
+     0 to 4, all are covered. Hence it adds this result to the
+     final result object
+    now 5th subordinate removes the element it added. and 
+    Now th one removes a from slate and slate,
+    it has done because it runs from str(len)-1 to str(len)
+    Now slate has a,a,b,a
+    Now 3rd subordinate, 
+
+    
+
+
