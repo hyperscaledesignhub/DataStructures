@@ -137,6 +137,58 @@ How we are acheiving it?
     now adds element ab to slate
     slate = [ab] now again same thing repeats 
 
+    Now our 1st subordinate has pick=1 i = 0,
+    hence slate = ab
+    Now it calls next second subordinate with next pick value pick=2
+    ab is not palindrome, hence this call returns. becuase there is no understand
+    if all other coordinates processes this again. Hence
+    we are back tracking from here to the next place
+    Next pick=2, 1st subordinate adds 'a' to it. Now 
+    slate= 'aba' 
+    Now this calls second subordinate with pick value=3
+    this is palindrome and hence this is allowed, 
+    i value at second subordinate ( which pick=3 from 1st)
+    is 3 < 5 and hence result is not added to the slate
+
+    Now second subordinate starts processing from i =3
+    which is 'a' 
+    it add a to the slate, and calls 3rd subordinate with i value=4
+
+    'a' is palindrome and 4 < 5 and 3rd subordinate starts processing
+    i =4 and it adds last element 'a' to the slate and calls
+    the 4th subordinate with pick+1 = 5 = I
+    since a is palindrome go to next level and since i=5 =len(string)
+    this is added to the result, result has aba,a,a and it returns
+    back 
+    Now 3rd subordinate removes 'a' from slate slate = aba a
+    now pick=5 , which is not less than 5 and hence it returns 
+
+    Now 2nd subordinate removes another a its added, now slate has aba
+    it has i=3 pick =4 so now it adds 3-4 aa to the slate 
+    now slate has [aba,aa] , calls again another 3rd subordinate 
+    with i =5 m since aa is palindrome and i= len(string) this is
+    added to the result, now result has [aba,aa] as well and returns
+
+    Now 2nd subordinate removes aa and pick=5 and returns
+
+    now ist subordinate removes aba, 
+    now pick =4,from 1-4 it adds abaa, since its not palndrome next subordinate 
+    returns back immediately 
+    Now pick= 5 and it returns 
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
 
 
 
