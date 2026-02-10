@@ -13,6 +13,19 @@ Now this call the 3rd subordinate
 3rd subordinate checks that length of the slate is 3 and it prints
 the result
 and returns
+now 2nd subordinate is at i =2 only and now it calls 3(b) subordinate
+by adding to slate 'B', 2nd subordinate state is: slate a1 and i=2 
+hencne now slate=a1B and calls 3(b) subordinate 
+now a1B is prinyter by 3b and returns
+Now this subordinate returns back to agann 2nd subordinate
+now 2nd subordinate has nothing to execute and returns to 1st subordinate 
+ist subordinate state is slate = a and position =1 
+It already added a digit and nothing to execute and returns to me 
+So my ist subordinate has done everything by printing all results
+start with 'a',. this is recursive leap of faith
 
+Now i am going to add 'A' to slate = [A] and call the 1(b) 
+subordinate now same thing repeats. This is called 
+recursive leap of faith and this subordinate is going to take care
 
 
