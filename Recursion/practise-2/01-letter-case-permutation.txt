@@ -3,25 +3,36 @@ Lets take the example of the program a1b
 I am going to add to slate 'a' since a is not a digit
 And then i call the subordinate to process the next element
 at position-1,
-My 1st subordinate is going to process 1st element, since
+My 1st subordinate is going to process 1st element 
+( w.r.t program string position), since
 1st element is a digit, it is going to add it to slate, now
 slate contain a1 and then calls its subordinate to process
 i=2 second element.
+slate lenght at 1st subordinate is 1 and 
+processed slate length is 2 ( processed means that is handed over
+to the ). Slate value at 1st subordinate is a, processed value is a1
+
 Now 2nd subordinate ( with respect to me) is processing 2nd
 element by adding small letter b to the slate-> slate = [a1b]
-Now this call the 3rd subordinate 
+state of slate at second subordinate is [a1]. Processed slate is [a1b]
+
+Now this call the 3rd subordinate. Here slate 
 3rd subordinate checks that length of the slate is 3 and it prints
 the result
 and returns
-now 2nd subordinate is at i =2 only and now it calls 3(b) subordinate
-by adding to slate 'B', 2nd subordinate state is: slate a1 and i=2 
-hencne now slate=a1B and calls 3(b) subordinate 
-now a1B is prinyter by 3b and returns
-Now this subordinate returns back to agann 2nd subordinate
+
+now 2nd subordinate is at i =2 only, slate state here a1 
+Now it processes capital value, a1B and it calls 3(b) subordinate
+
+now a1B is prinyted by 3b and returns
+
+Now this subordinate returns back to again 2nd subordinate
 now 2nd subordinate has nothing to execute and returns to 1st subordinate 
-ist subordinate state is slate = a and position =1 
+
+1st subordinate state is slate = a and position =1 
 It already added a digit and nothing to execute and returns to me 
-So my ist subordinate has done everything by printing all results
+
+So my 1st subordinate has done everything by printing all results
 start with 'a',. this is recursive leap of faith
 
 Now i am going to add 'A' to slate = [A] and call the 1(b) 
