@@ -1,0 +1,18 @@
+How this is happening let me draw in piece of paper and explain
+Lets take the example of the program a1b
+I am going to add to slate 'a' since a is not a digit
+And then i call the subordinate to process the next element
+at position-1,
+My 1st subordinate is going to process 1st element, since
+1st element is a digit, it is going to add it to slate, now
+slate contain a1 and then calls its subordinate to process
+i=2 second element.
+Now 2nd subordinate ( with respect to me) is processing 2nd
+element by adding small letter b to the slate-> slate = [a1b]
+Now this call the 3rd subordinate 
+3rd subordinate checks that length of the slate is 3 and it prints
+the result
+and returns
+
+
+
