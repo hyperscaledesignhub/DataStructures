@@ -8,7 +8,7 @@ My 1st subordinate is going to process 1st element
 1st element is a digit, it is going to add it to slate, now
 slate contain a1 and then calls its subordinate to process
 i=2 second element.
-slate lenght at 1st subordinate is 1 and 
+slate length at 1st subordinate is 1 and 
 processed slate length is 2 ( processed means that is handed over
 to the ). Slate value at 1st subordinate is a, processed value is a1
 
@@ -39,4 +39,31 @@ Now i am going to add 'A' to slate = [A] and call the 1(b)
 subordinate now same thing repeats. This is called 
 recursive leap of faith and this subordinate is going to take care
 
+In the optimised version we are using the same thing but we are using mutable
+string. And only one copy is passed.
 
+Now what happens if the string is not cleaned what it has added?
+
+let's take simple example:
+a1b
+i am processing slate with 'a' and handed over to the subordinate
+1st subordinate is going to receive a. And he process slate with 1
+and calls the 2nd subordinate
+
+2nd subordinate adds to slate b and calls the 3rd sub ordinate which 
+is going to just print the element  a1b 
+
+Now control comes to 2nd subordinate, since we are not removing from slate
+slate has a1b, and second subordinate adds to slate B, slate = a1bB 
+And calls the 3rd subordinate: since i =3, 3rd subordinate prints the element
+a1bB
+Now returns. 2nd subordinate also returns 
+1st subordinate also returns 
+Now control comes to me, i have slate with a1bB 
+Now i am going to add 'A' to slate, now slate is : a1bBA 
+Now again same thing repeats: 1st subordinate adds 1: a1bBA1, i=1
+second subordinate called with i=2, it adds 'b', slate is : a1bBA1b 
+calls 3rd subordinate with i=3, it prints the value a1bBA1b.
+and returns,. now 2nd subordinate adds B to slate and calls 
+the 3rd subordinate: now slate has: a1bBA1bB. This is printed 
+Hence everytime slate is printed with previous value. 
