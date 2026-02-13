@@ -1,0 +1,30 @@
+Here is the first thing to understand:
+
+What is permutation?
+
+Arranging items over a line
+
+Without repetetion:
+Suppose we are arranging people over a line same person can't repeated
+hennce formulae is p(n,r) 
+Where n is total people available and r is number i am chosing 
+
+With repetetion
+Suppose take number plate, repetetion allowed how many ways i can 
+arrange 'n' number over 'r' slots?
+n*power(r)
+
+Combination:
+
+Selecting the items,
+
+Without repetetion 
+Suppose i am selecting r people out of total n people.
+Then how many ways i can select: C(n,r) = n!/r!*(n-r)!
+
+With repetetion:
+Suppose i am selecting fruits with repeated values 
+there are n different fruits and i want to select r fruits
+repetetion allowed
+
+C(n+r-1,r) is the formulae = (n+r-1)!/r!(n-1)! 
