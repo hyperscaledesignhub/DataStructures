@@ -28,3 +28,52 @@ there are n different fruits and i want to select r fruits
 repetetion allowed
 
 C(n+r-1,r) is the formulae = (n+r-1)!/r!(n-1)! 
+
+In this permutation example we are creating subordinates dynamically
+
+We are starting from 0'th position in slate upto i reaches the length
+of the input
+Ok Here for ex: permutation without repetetion we are doing following 
+123 is there:  123, 132, 213,231,312,321; 3 elemenets arranging in 3 slots: p(3,3):
+3!/0! = 6
+How we are implementing the same?
+slate of lenght 3, let's say:
+i=0, at my position i am calling subordinates from i to len(input): 0 to 3
+what i am doing, looping through for loop from k starting from 0 to 3
+every time i am swapping k and i positions before adding to slate i'h values
+That means when k =0, same 0'th element added since i and k are same
+i=0, slate: 1
+i=1, num =  1 and 0 swapped: 213, adding to slate,2 slate:2 
+i=2  num=2 and 0 are swapped, 321, adding to slate, 3 
+
+When i=0 and i am calling subordinate to add to slate from pos=1,of input 123
+subordinate do the same: he adds to slate 123 and 132 and returns
+
+When i=1 slate = 2, and input is 213. Subordinates adds 213 and 231 and returns 
+
+when i=2 slate=3, input is 321. Subordinates add 321 and 312 and returns 
+
+That means from my prespective at i=0, i don't care and my subordinates takes
+care rest 
+
+From 1'st subordinate perspective i=1, he starts from i=1 to 2
+he adds to given slate  when he recevied from me, slate=1 and input = 123 
+k=1, i=1 adds 2 to slate: slate=12 and sends to 2nd subordinate with i=2 
+
+2nd subordinate i=2 k starts from 2 to 2 and he receives input: 123, 
+he adds last element to slate: slate=123 and calls 3rd subordinate
+3rd subordinate just prints the element since i=3 equal to length 
+and returns 
+3nd subordinate also returns
+Now 1;st subordinate k=2,i=1, swaps i and k, input becomes  132
+adds 1st element to slate 13, and calls again 2nd subordinate
+2nd subordinate receives i=2 and input=132 slate=13 
+Now he has k from 2 to 2, hence he adds 2nd element of input 2 to slate
+and calls 3rd subordinate with i=3, 3rd subordinate add to the result, 132
+and returns 
+2nd subordinate returns 1'st subordinate undo the swap of 2 and 3, again keeps
+the state back to 123 and returns to me 
+
+This is how hierarchy works
+
+
