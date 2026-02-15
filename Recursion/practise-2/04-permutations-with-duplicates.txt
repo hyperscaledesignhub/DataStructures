@@ -1,0 +1,55 @@
+Review of the problems done so far 
+Let's take helper() method used in recursion
+If we call the helper method only once in the recursion then 
+its called repatedly until the base condition meets
+
+This we can depeict as subordinate returning me what i desired, thats its
+provded we take base condition to terminate the subordinate 
+
+Suppose if i call 2 helper methods then 
+first subordinate -> second one -> third one -> keeps calling the chain 
+until the base condition terminates the chain and returns back 
+And then second subordinate called until its chain complates and terminated by base condition 
+and returns back
+The way i can depict is 1st subordinate is doing my job and coming back 
+Second subordinate is doing my job and coming back 
+
+Let's apply this to the letter case permutation
+Whenever there is a letter i am calling 2 subordinates
+ist subordinate adds lower letter, and i can assume that it finishes the rest of 
+the job by adding remaining slots of the slate  all other numbers by its subordinates 
+and returns back to me
+Now i call the second subordinate,I am adding capital version of the 1st letter 
+to it. Rest of the elements are filled my subordinates with the remaining letters 
+and they come back 
+
+Let's apply this to subsets problem. First we add to the slate empty slot in 1st place 
+and i am calling subordinate to add from second place. Subordinate finishes with all
+the elements starting from second position without filling 1st one. 
+How come 1st subordinate does it? Since its always receives enmpty one? Its the job
+of its subordinates which adds by including elements as well. Its duty is just gather all 
+elements without adding 1st element
+Similarly in the above problem duty of the 1st subordinate is just add first element with small letter
+and then finish the rest.
+Next second subordinate comesback by adding all other elements which starts with 
+by including the first element. It finish all those results and come back 
+
+Let's apply this to the permutation:
+here we are dynamically defining the subordinates
+Size of the subordinate is from i to len(num) 
+that means i am calling subordinates of size 0 to 3, let'ssay lenght of string is 3
+total i am calling 3 subordinates 
+1st subordinate does the following:
+it adds to slate 0th  element and ask its subordinate do calculate permutations 
+starting from 1st element onwards, which i don't need to worry about 
+my first subordinate finishes its job and comes back with the result 
+of all permutations starting with first number
+
+Here the main doubt is how first 1st subordinate executes, how many subordinate dynamically 
+its going to create? Same principle applies there
+Its responsibility is from second to third slot hence it creates 2 subordinates
+In previous problems every subordinate needs only 2 subordinates 
+Here it varies how come first problems don't need and this problem need?
+First problem and second problem, every subordinate has to do 
+2 operations captial and small. But when it comes to filling the slot only one slot 
+each of them is filling 
