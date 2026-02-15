@@ -53,3 +53,37 @@ Here it varies how come first problems don't need and this problem need?
 First problem and second problem, every subordinate has to do 
 2 operations captial and small. But when it comes to filling the slot only one slot 
 each of them is filling 
+
+Here also every subordinate is filling only 1 slot, why we need 3 subordinates 
+for i=0, 2 subordinates for i=1 and 1 subordinate for i=2?
+Its not about slot fliing, in both problems every subordinate fills only 1 slot 
+But whats the key differentiator?
+In my case i am keeping 1st element in slate and calling subordinate-1
+I am keeping second element in position 1 and calling the subordinate-2 
+i am keeping 3rd element in position 1 and calling the subordinate-3 
+
+Also for every subordinate i am calling i am asking them to start from the second position 
+(this is same as previous 2 problems). which shouldn't include the element that is added 
+to the slate, this is taken care by the logic.
+But primary question why we need variable subordinates, even though every time same 
+subordinate is only adding 1 element to slate?
+Yes i am calling 3 subordinates each of them adding 1st,second aand third element to slate 
+in 1st position of the slate 
+
+my 1st subordinate does following: 
+Its going to add 2 and 3rd element to the slate at positon 2 
+
+its subordinates are going to add only 3rd element to slate at position-3
+
+So here the variable part is number of elements added to the slate varies 
+I need to add only 3 elements to slate at positon-0 and call the subordinates
+level-1:
+subordinate needs to add only 2 elements to the slate at position-1 starting from
+posotion-1 ( This is also same as previous add to slate at posotio-1 starting from positionsition-1
+of the input) 
+level-2
+subordinate is going to add only 1 element at position-3 of slate and input posotion-3 
+
+In previous problems every subordinate needs to add 2 elements to the slate 
+
+Thats the difference
