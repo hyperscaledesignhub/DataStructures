@@ -87,3 +87,43 @@ subordinate is going to add only 1 element at position-3 of slate and input poso
 In previous problems every subordinate needs to add 2 elements to the slate 
 
 Thats the difference
+
+So the difference between the previous two and current one is:
+Every subordinate last 2 things every time we need 2 coordinator each of them 
+need to add upper and lower,include and exclude.
+For example give a number 1,2,3
+In permutation case first we need to add to slate 3 numbers in the first slot 
+In the second slot i have to add only 2 numbers. 
+Third slot i have to add only 1 number
+
+Where as in letter case permutation, given a number abc:  
+first slot i have to add 2 numbers a and A. second slot i add b and B .
+Third slot i add c and C. 
+So for every slot we need 2 subordinates.  Each subordinate adding small and capital 
+and returning to their boss the results.
+
+Thats the difference of subordinates required for each level
+
+Again the implication is same, everytime i add anumber to slate subordinate takes care 
+of the rest of slots addition with first slot being the number i added and returns 
+back 
+
+This principle still holds good
+Hence we have to only focus on how many subordinates are required at each slot 
+based on that we need to call that many
+
+Suppose take for example permutations of numbers 1,2,3 with repetetions allowed and given 
+a slate with 3 slots 
+Each slot we have to place elements equal to the numbers but the position of the number
+varies in each slot 
+
+Hence for this we need subordinates size equal to the overall numbers 
+and first subordinate adds 1  and level-1 subordinates add all numbers 111,112,113,121,122,123,131,132,133
+ hence number of subordinates required equal to total numbers each leve 
+ for i in range(0,len(nums)):
+   slate.append(num[i])
+   helper(slate,i+1)
+   slate.pop()
+Becuase every slot we need to add all 3 numbers repeptetion allowed 
+ This is the principle
+ 
