@@ -155,7 +155,10 @@ to add 3 numbers 1,2,3 in the slate.
 Given one of the number added to slate at position 1, we have to add 
 only 2 remaining numbers at position=1 thats wht 2 subordinates 
 at slate-2. Finally at position 3 only 1 number has to be added and 
-only 1 subordinate is required
+only 1 subordinate is 
+At a given position i number of subordinates depends on the number 
+of elements that subordinate has to add. 
+
 
 
 
