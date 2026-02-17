@@ -126,4 +126,37 @@ and first subordinate adds 1  and level-1 subordinates add all numbers 111,112,1
    slate.pop()
 Becuase every slot we need to add all 3 numbers repeptetion allowed 
  This is the principle
+Now coming to original problem of permutation with repetetion:
+there are repeated numbers for ex: 1223 how to do the permutations:
+In given subordinate we can add to slate a given number only once 
+That means i can add to slate 2 only once. I can't add to slate 2 same numbers
+why?
+for ex:
+i add 1 to slate and call subordinate which takes care 223
+subordinate-1: add to slate 2; calls subordinate-2, it adds to slate
+23 and 32 and prints:  1223,1232; 
+Now subordinate-1 again add to slate 2, then what happens, same 
+results 1223 and 1232 are printed and repeated. Hence it will skip same
+number adding to slate, since me or any subordinate is going to
+add to slate always add to fixed position. Thats the reason.
+Hence the logic is simple:
+Every layer checks whether any number is repeated, if it is then
+it is going to skip it, to prevent duplication of same results
+
+Again repeating why first 2 problems are using only 2 subordinates?
+And why permutation is using dynamic subordinates ranging from
+current position of slate where data is adding to the last position?
+
+Reason is in first two problems we always have to add capital and small 
+by every subordinate at every psotion 'i'
+
+But in permutation for ex: 123, at a given position i=0, we have 
+to add 3 numbers 1,2,3 in the slate.
+Given one of the number added to slate at position 1, we have to add 
+only 2 remaining numbers at position=1 thats wht 2 subordinates 
+at slate-2. Finally at position 3 only 1 number has to be added and 
+only 1 subordinate is required
+
+
+
  
