@@ -9,12 +9,12 @@ def permutation_with_repetetion(st:str):
             return
         #recursion
         for k in range(0,len(st)):
-            slate.append(st[i])
+            slate.append(st[k])
             helper(slate,i+1)
             slate.pop()
     helper([],0)
     return result
-input = 'abc'
+input = 'ab'
 r=permutation_with_repetetion(input)
 print(f"Result of the program permutation with repetetion is {r}")
         
