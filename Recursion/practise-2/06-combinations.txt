@@ -61,7 +61,43 @@ That means first subordinate always adds
 A 1-1: 2-1: B prints 
 A 1-2: 2-1: C
 What order we need to write: 
-A 
+We have to write this program in include and exclude 
+way. Becuase combinations are nothing but subsets of specified
+length
+
+Lets see the program:
+if len(slate) == size_combination:
+  result.add(slate)
+  return
+
+if i == n: # n is length of the input it simply returns 
+  return 
+
+helper(slate,i+1)
+slate.append(nums[i],i+1)
+helper(slate,i+1)
+slate.pop()
+
+Now let's debug data flow for: ABC, comb_size:2 
+
+i am 0, my subordinate is 1 .. 
+0->1:1 , ([],i=1), 
+now 1->2:1 ([],i=2), here nothing is added to slate 
+and since we are checking the condition len(slate) must be combination 
+size it won't be added to slate.
+
+Now 2->3:1 ([],i=3), since i==3 len then it returns 
+now 2->3:2  adds C  to slate (C,i=3), since length of the slate not equal to 2, and 
+since i=3 it returns 
+
+Now 1->2:2 adds B (B,i=2) calls 2
+2->3:1 adds nothing to slate and calls 3 (B,i=3), this returns back at second base condition 
+After that 2->3:2 adds second element to slate (BC,i=3) calls 3, since length of 
+the slate is 2 it is added to the result and comes back 
+Similary all others are also happen
+
+
+
 
 
 
