@@ -1,0 +1,29 @@
+In this problem we need to return all the subsets whose sum is 
+equal to the given target
+
+This is what i am guessing:
+Subsets we obtain with include and exclude, everytime a subset is added
+we need to add the sum the the result variable
+
+Anytime sum reaches target we need to add all the subset values 
+to the result and return 
+
+Suppose i am adding 3 to slate then target= target-3 
+that i send to my subordinate 
+my subordinate first check target ==0 then it adds the slate to
+the result 
+
+program is:
+
+if target == 0:
+  result.append(slate[:])
+  return 
+helper(slate,i+1,target)
+slate.append(nums[i])
+helper(slate,i+1,target-nums[i])
+slate.pop()
+
+Lets see 1,2,3,4  target =6 
+
+0:1 -> [1],1,
+
