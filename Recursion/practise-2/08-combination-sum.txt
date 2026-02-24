@@ -1,0 +1,69 @@
+in the combination sum we are trying to get the values of subset sum 
+values.
+For this for ex: i have numbers like:
+
+5,4,2,7,1,1
+need to find the sum of values = 9
+first sort the numbers
+1,1,2, sum =2 
+Apply include exclude let's say 
+0:1 ([],1,2) -> 1:1 ([],2,2) -> 2:1 ([],3,2) -> returns 
+2:2 (2,3,0) -> result =[2], returns 
+1:2 (1,2,1) -> 2:1 (1,3,1) -> returns 
+2:2 ([1,2],3,-1) -> returns 
+
+0:2 (1,1,1) -> 1:1 ([1],2,1) -> 2:1 ([1],3,1) -> return 
+2:2 ([1,2],3,-1) -> returns 
+1:2 ([1,1],2,0) -> returns result = [2],[1,1]
+
+But if we see for 1,1,1,2 
+
+We get  from 2:2 ([1],2,1) -> 3:2 ([1,1],3,0) 
+1:2 ([1],2,1) -> 2:0 -> 3:1 ([1,1],0,4) -> return, result=([1,1])
+              -> 2:1 ([1,1],2,0) -> return result = ([1,1],[1,1]) 
+              duplicates came 
+Thats why this wont work simple include and exclude 
+
+ANother approach is:
+
+suppose we have 1,1,1,4,5  we want to find count=6
+
+First at position 'i' we find all the duplicate count values. 
+After finding them, for ex: above, i have 3 1's are there 
+now count=3 
+for copy in range(0,3):
+  num = nums[i]
+  
+  if target - copy*num < 0:
+    break 
+That means if the current copy count sum is greater than target then
+we can't add to the slate. If it is lesser then:
+adding to slate that many copies 
+for cp in range(0,copy):
+  slate.append(nums[i])
+Now i am calling the subordinate to start from i+count  position onwards 
+and find the remaining target: [target - copy*num] 
+to find the remaining sum. Once it comes back then 
+helper(i+count, target - copy*num[i],slate)
+now i am removing items added to the slate 
+for cp in range(0,copies):
+   slate.pop()
+Let's check for 1,1,1,4,5:
+count =3 
+cp =0 added slate [1]
+helper(0+3,6- copy*1,[1]) = helper(3,5,[1]) 
+
+After adding first 1, now helper called for position=3
+Lets focus on position=3 
+At this point count =2 in for loop
+And there are no copies added by cp for loop since
+there are no duplicate
+Hence directly helper path executed  
+helper((i=3)+count=1,5 - copy*num[3],slate=[1] ) = 
+helper(4,5,[1]) is called 
+Again when count =1 following is exceuted 
+helper((i=3) +count=1, 5- copy (=1)*num[3] (=4),slate=[1,4])
+helper(4,5-4,[1,4])
+helepr(4,1,[1,4])
+That means for non duplicates we are calling include and exclude logic 
+That make sense 
