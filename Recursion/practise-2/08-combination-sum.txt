@@ -67,3 +67,32 @@ helper(4,5-4,[1,4])
 helepr(4,1,[1,4])
 That means for non duplicates we are calling include and exclude logic 
 That make sense 
+Overall logic
+If we are keeping the duplicates then same values repeats in the
+combination sums 
+To avoid that we are doing the following:
+We are first counting the duplicate values 
+After that we are browsing through duplicate values 
+adding in counts like 1,2,3 numbers 
+After that before adding to slate we are checking 
+2*dpu_num , 3*dup_num is less than target. If its is less than 
+target then we are  allowing to add to slate
+
+Then we are incrementing the count value of i to reach skip duplicates 
+and reach to the next number , i+count is what we are making 
+
+And calling the subordinate 
+
+In the subordinate there is include and exclude logic which 
+takes care of finding the combinations of current slate which 
+gives the sum 
+
+That means we are adding duplicates incrementally and 
+calling the subordinate to find the combinations whose value equal 
+to the subset sum 
+For non duplicates we are adding include and exclude logic to continue
+finding using the old logic as is 
+
+
+
+
