@@ -22,3 +22,56 @@ sum of the repeated value is lesser than the target sum
 Generate parenthesis: 2 helpers 
 
 
+How the logic is implemented with helpers?
+letter case permutation:
+1 slot we should fill with 2 options upper case or lower case 
+hence we need 2 subordinates. 
+That means, given the num=3,  slot=0 of the slate is filled with num[0] upper and lower
+slot=1 of the slate is filled with the num[1] upper and lower. 
+slot=2 of the slate filled with the num[2] upper and lower 
+
+2. Subsets of sets:
+Given the num of length=3, slot=0 of the slate is filled with 
+exclude number and include num[0], 
+slot=1 of the slate is filled with exclude number and include num[1]
+slot=2 of the slate is filled with exclude number and include num[2]
+That means num = [1,2,3]: 0-> []->1 ->[] -> 2[] -> final result =[] 
+2->[3] -> r=[3];  
+0 -> 2*2 options 
+1 -> 2*2 options 
+total= 8 options 
+
+3. Combinations: 
+Same as subsets but we are using backtracking to check whether 
+the slate length reaches combination length before calling any 
+subordinate and return the result from there. This is backtracking 
+slot-0 helper-0 is going to add empty [], slot-1 helper-1 is going to
+add num[0]
+
+4. Subset sum:
+
+Same as subset generation: But every slot we are deducting the 
+target value. And before calling subordinate we are checking 
+whether the target value is zero or not. If its zero, then 
+then we are adding the result 
+slot-0 empty value, target-0, slot-1 num[0] and deduct target-num[0]
+
+5. Combination sum:
+
+Here every for a given slot if there is repetetion: let's say 
+number: 1,1,1,2 
+slot=0 add num[0] call helper-0, which focus on slot=3 
+slot=0,1 add num[0] and num[1] -> helper-1 which focus on slot=3 
+slot=0,1,2 add num[0],num[1] and num[2] and call helper-2 
+which focus on slot=3 
+for num=2, calls 2 helpers: 
+add [] and call helper-0 ,
+add [2] to slate  and call helper-1 
+Also for every case we deduct target value from the numbers added to slate 
+such that next subordinate checks in the begining if value ==0
+and return 
+
+How Lazy manager approach is useful:
+
+
+
