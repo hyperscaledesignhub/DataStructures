@@ -1,0 +1,24 @@
+This is reiteration of all problems:
+In every problem following data is captured:
+
+1.How many helper functions are used 
+2.How the logic is implemented with helper functions
+3.How can we apply recursive leaf of faith using lazy manager approach?
+
+letter-case-permutation: 2 helper functions are used 
+subsets-of-sets: 2 helper functions are used 
+permutations: dynamic helpers, given len(num) =4, for pos =0, len(num)-pos = len(num) helpers, 
+for pos=1, len(num) -pos = 3 helpers, for pos=2 len(num)-pos = 2 helpers 
+for pos=3, len(num)-pos=1 helper 
+
+Combinations: Combinations just 2 helpers 
+
+Subsetsum: Just 2 helpers 
+
+Subsetsum with repetetion or combination sum : dynamic helpers: For every repeated value 
+helpers equal to number of times that value is repeated, provided 
+sum of the repeated value is lesser than the target sum 
+
+Generate parenthesis: 2 helpers 
+
+
