@@ -213,7 +213,27 @@ assume for first slot of the slate we are going to add the given number
 and the subordinate is responsible for filling the remaining elements 
 of the slate whose starting value is num[0]. 
 
-For 
+Only thing we need to take care is: 
+Every time when we add the number we should make sure that remaining numbers list that
+we send shouldn't contain the number we added.  
+
+Next for combinations:
+As per maths its a subset, for subset we need 2 subordinates include 
+first number and exclude first number. Internally subordinate is going 
+to take care the combination size is 2 and add the final result
+
+Nex for combination sum:
+
+We are calling subordinate equal to the number of times, the number is 
+repeated. If its repeated 3 times,
+we call 3 subordinates:
+1st subordinate we add at slot[0] = 1 and we ask subordinate to
+add from 4th place, remaining target value we subtract 1
+2nd subordinate we add at slot[0] and [1] , 1,1 and ask subordinate 
+from 4th place remaining target value we subtract 2
+
+3rd subordinate we add at slot[0],slot[1] and slot[2], 1,1,1 and 
+ask subordinate to fill from 4th place remaining target value we subtract 3 
 
 
 
