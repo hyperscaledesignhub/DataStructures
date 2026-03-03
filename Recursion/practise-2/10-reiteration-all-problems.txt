@@ -71,7 +71,149 @@ Also for every case we deduct target value from the numbers added to slate
 such that next subordinate checks in the begining if value ==0
 and return 
 
-How Lazy manager approach is useful:
+
+Again reiterating how first 4 problems are being used:
+1. letter-case-permutation: 
+How the logic is implemented:
+Every position of the slate is going to store capital and small 
+letter. Hence every position is having 2 options: capital and small 
+Suppose if we take 3 letter word: aBc ->
+pos=0, has 2 options -> a and A; pos=1 has 2 options b and B; 
+pos=2 has 2 options c and C;
+overall 2*2*2 = 8 options are there 
+Since every position there are 2 options, we need 2 helpers 
+for every position 
+Thats why 2 helpers are required.  
+Since every position 2 helpers are needed, we can define the recursive 
+definition of two helpers first helper add small letter at pos=0 
+and second helper add capital letter at pos=0; Same thing is repeated 
+for all other letters of the words 
+
+2. subsets-of-sets: 
+Here we are excluding the first number in the slate and remaining 
+2 slots of the slate all subsets of remaining 2 slots all subsets 
+2 numbers are generated. 
+Now again we are including the first number in the slate and generating 
+all the remaining combinations including rest of 2 numbers 
+That means we can think of as 1'st set of subsets we get by excluding 
+first number and generating all remaining 2 number subsets 
+2'nd set of subsets we can think of as 2'nd set of subsets we get 
+by including 1st number and excluding all remaining numbers
+
+3. Permutations:
+
+Mathematically permutations means:
+given a number with [1,2,3] first slot of the slate has 3 options 
+second slot of the slate has remaining 2 options 3rd slot has 1 option
+overall 3*2*1 =6 options
+
+Mathematically letter case permutation: First slot has capital or small 
+2 options second slot has 2 options and 3rd slot has 2 more options 
+overall 2*2*2 = 8 options
+Mathematically subset generation has: first slot has 2 options include
+or exclude, second slot has 2 options <include/exclude> and 3rd slot 
+has 2 options <include/exclude>, overall 2*2*2 = 8 options
+
+How to implement:
+With letter case permutation: take 2 helpers with each helper has got 
+first one include small and second one includes capital 
+
+We can think of first helper is adding 1st small letter and calling 
+second subordinate, which is going to fill remaining slots 
+
+Calling second subordinate which is going to generate all starting 
+with capital letter and generate all remaining
+
+which is going to fill all the remaining slots 
+
+subsets: 1st subordinate is going to return all combinations 
+by excluding first number 
+2nd subordinate is going to return all combinations by including 1st number 
+in the slot
+
+permutation: 1st slot is going to have all 3 numbers, second slot 
+for each of the number we included in 1st slot, there are 2 options
+by excluding the the number we added in first slot. 
+Third slot there is 1 remaining number that is added, there is only 
+1 option on 3rd slot
+
+Combinations: 
+Nothing but subsets of a given number with specific length of the
+subset size. We need to collect only specific subsets of fixed length to the
+result and return.
+
+Sub-set-sum: 
+Same as finding number of subsets, after adding every element of 
+the subset to the slate we are going to deduct its value from the 
+target, if target ==0 then we append slate to the result
+
+Combination sum:
+Here for repeated numbers we do the following:
+we add to the slate the repeated number for the following number of times
+suppose we have number 1211315, we sort the number 
+1111235
+first add the number 1 to the slate and add to next slot of the 
+slate next number 2 and so on.,.each addition to the slate deduct 
+the target value and find whether the target value reached 0. 
+If its reached 0 then that is added to the result
+Next iteration add 11 to the slate and find the rest and so on....
+
+How can we assume this as lazy manager approach:
+
+See lazy manager approach always consider only first step and assumes 
+that rest is taken care by the subordinates using the recursive leaf
+of faith
+
+First step of letter case permutation adding small and capital 
+first element to the first slot. 
+When small element added, we can assume that rest of the slots 
+are filled by subordinate we are calling which starts filling
+from the next slot onwards and takes care of adding such results 
+from next number at 1 onwards to the slate.
+
+Second manager we are having add capital of num[0] to the slate. 
+Hence it is going to take care of adding the rest of the results
+to the slate from pos=1 onwards. 
+
+In the subset problem:
+
+We have 2 subordinates calling, first slot i am adding nothing 
+blank and calling my subordinate to fill pos=1 onwards 
+my subordinate is going to fill the numbers from pos=1 onwards 
+and it returns all the subsets of numbers from pos=1 to n,
+i no need to bother about. Its going to add result and come back 
+
+I am going to add num[0] to the slate at pos=0; And its going to 
+call the subordinate to repeat the same from pos=1 
+
+So second subordinate is going to provide all the subsets by including 
+num[0] to the slate 
+
+And its going to return all the subsets by including num[0]
+
+In permutation: 
+
+We have number of subordinates = total numbers;
+First i am going to add first number to slate and call the subordinate, which add from pos=1 
+and returns all the permutations by including first number 
+Next i am going to add second nymber to slot[0] and going to call the subordinate 
+which is going to generate permutations from pos=1 to n and returns 
+
+Next i am going to add last number to the slot[0] and call the subordinate which 
+generates permutations of remaining all numbers by excluding slot[0] number permutations 
+
+
+
+
+
+How Lazy manager app    roach is useful:
+
+First understand the repetition of the activity and 
+assume for first slot of the slate we are going to add the given number 
+and the subordinate is responsible for filling the remaining elements 
+of the slate whose starting value is num[0]. 
+
+For 
 
 
 
