@@ -235,5 +235,60 @@ from 4th place remaining target value we subtract 2
 3rd subordinate we add at slot[0],slot[1] and slot[2], 1,1,1 and 
 ask subordinate to fill from 4th place remaining target value we subtract 3 
 
+Now for the parenthesis:
+
+We need to call 2 subordinates, 1 subordinates has to 
+add (   and other has to add ')'  such that first subordinate 
+is going to return all the values starting with ( and ending with proper 
+values 
+That means we consider only first subordinate values starting 
+with (  and ignore second starting with ')' 
+
+For N Queens:
+WHat is the logic of helper?
+
+Here my focus is on 0'th row, i look for all coloumns from 
+0 to n to fill the 0'th row. 
+first i will fill  0'th row 0'th coloumn and call the subordinate
+to look for 1'st row, subordinate can succeed or fail. If the subordinate 
+succeed to locate the 1'st row he won't come back.
+If the subordinate fail to look for the 1'st row using all coloumns 
+then i will adjust row=0 to different coloumn to place the knight. 
+And call the subordinate again, again this is repeated. 
+Even after successfully placing by subordinate and comes back to me
+i am going to check for coloumn 1 and see if i can place in better 
+position and again call subordinate to check the better positions 
+again based on my coloumn position. If i couldn't find the better 
+position simply i am going to try next coloumn and so on.. 
+
+So overall idea is:
+Here my focus is on row=0 but trying all coloumns 0,0 to 0,n 
+when i am trying?
+Whenever my subordinate finished and comes back.
+Let's take example:
+Let's take 3*3 board 
+Suppose i have placed at 0,0 initially:
+Now i call subordinate to focus on 1'st row, subordinate is going to
+try again from row=0 to row=n and if it find the suitable place 
+then its  going to call its subordinate to focus on row=2, 
+then suppose if it finds suitable position in row=2 then 
+it is going to call its subordinate to focus on row =3 
+Suppose if its able to find then return to subordinate-2 
+then this subordinate again tries any position available for row=0 
+and coloumn = 1, if not then tries row=0 and col=2, suppose 
+if its find better position then calls subordinate 
+to check again better position in row=1, it tries if it couldn't 
+then again backtracking happens i am going to remove whatever i kept 
+in the slate before and for coloumn=2 and then trying from coloumn=3
+suppose if i could find some place at coloumn=3 then i call 
+subordinate to try row=1, then it starts trying from col=0 to col=3
+If its unable to find then returns 
+Then i remove whatever i placed and come out 
+
+Think of:
+Suppose i am successfully placed a position in slate, and call 
+the subordinate, and subordinate may place or mayn't place and return 
+then i am going to remove from my slate and then tryin 
 
 
+Here we are calling the helper for all the 'n' coloumns 
