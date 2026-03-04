@@ -288,7 +288,25 @@ Then i remove whatever i placed and come out
 Think of:
 Suppose i am successfully placed a position in slate, and call 
 the subordinate, and subordinate may place or mayn't place and return 
-then i am going to remove from my slate and then tryin 
+then i am going to remove from my slate, remember i am going to focus 
+on row=0 slate only.
+Why?
+Suppose intially i placed at col=0, in the slate, then my slate 
+has 1 entry. Suppose subordinate came back, then i remove from slate 
+then my slate is again empty and then i suppose at col=2 I found 
+another position. Then i add another entry in slate at row=0, here 
+row designates the index in list.
+That means my slate always has row=0
+What about ny subordinate slate?
+Since i placed a position at row=0,col=3, then my subordinate 
+is going to get the same copy, and it place in row=1 always 
+And every subordinate rows are fixed and after 3rd subordinate reached 
+if its able to place in a position that value is saved in final result 
+After that it removes and try different position in next col for the 
+same row.
+
+
+
 
 
 Here we are calling the helper for all the 'n' coloumns 
