@@ -1,0 +1,176 @@
+How many helpers are needed in each problem?
+
+How the helper logic is used in each program?
+
+How this is applied to lazy manager paradigm?
+
+1. letter-case-permutation:
+Helpers: 
+Here we need to produce combinations of capital and small letter. 
+Imagine we have a slate, list, where we are keeping all letters 
+and in each slot from left to right, 
+at each slot we have to fill 2 options capital and small of the 
+letter at num[i] starting from num[0]
+
+Hence we need to fill slate with 2 options capital and small 
+I will fill slot=0 with small letter of num[0] and call the 
+helper to start filling from pos=1 onwards.
+This helper takes care of filling from position 1 onwards 
+which i don;t care 
+
+Next i will fill slot=0 with captial version of number num[0] 
+and i call the subordinate to fill remaining from slot=1 and 
+i don't care, subordinate takes care 
+
+2. Subsets of sets:
+Here i need to generate 2 subsets one subset excluded 1'st number 
+another subset includes the 1'st number 
+Hence i don't add anything to slot 0 and call the
+helper to fill from slot 1 
+
+After the first helper finishes all remaining subsets 
+i am going to add num[0] to slot-0 and call the helper 
+to fill remaining numbers from slot-1 
+
+Hence i need 2 helpers. 
+
+3 permutations 
+
+Let's say num= 1,2,3 ;
+Permutations 0'th slot i have 3 options to fill 
+1'st slot i shouldn't repeat the same number hence
+i have 2 options to fill
+2'nd slot i have to fill 1 number and then i have only 1 
+option to fill 
+Hence slot=0 we need 3 helpers 
+slot=1 need 2 helpers
+slot=2 need 1 helpers 
+
+Above 2 problems all slots need 2 helpers, because every slot needs capital and
+small.Hence we need two helpers for each slot. 
+
+But in permutation slot-0 we need 2 helpers, slot-1 we need 2 helpers and slot-2 we 
+need 1 helper. 
+Thats how we designed for loop. 
+
+But how these helpers influence: 
+
+let's take slot-0 first helper-0 for the given input {1,2,3} 
+slot-0 first number is added: 1, <slot-1, slot-2>
+slot-1 2 helpers helper-1:0 ([1,2],[3], 2) -> 2:0 ([1,2,3],3) -> 3:0 add 
+result [1,2,3],return
+2:0 returns 
+1:1 ([1,3],[2], 2) -> 2:0 ([1,3,2],[],3) -> [1,3,2] is added return 
+for given first helper:  1,2,3; 1,3,2 are generated 
+similarly from second helper: 2,1,3 and 2,3,1 are generated 
+from third helper: 3,1,2 and 3,2,1 are generated.   overall 6 
+
+Combinations:
+
+Combinations are nothing but the subsets of specific size. Suppose we choose size 2 
+of the combinations of numbers 1,2,3,4 
+then same subset generation logic used 
+Where we need 2 helpers, one helper is to exclude first number and call helper for 
+the next slot. 
+Other helper include first number in slate [1] and call helper to fill next slot 
+Then next helper for slot-1 excludes 1'st slot number and call the helper for 2'nd slot. 
+2'nd helper also excludes and calls 3rd subordinate for 4th slot, 4th helper also 
+repeats the same and calls the 5'th helper since number size reached it returns 
+now 4'th helper include 4'th number calls 5'th subordinate: ([1,4] , 5) it adds to the 
+result [1,4] and returns 
+4'th subordinate helper-1 also returns and return to 3rd subordinate. 
+3'rd subordinate includes 3'rd element ([1,3],4) -> since slate sise equals to 
+combination size it adds [1,3] to the result and returns 
+now second subordinate second helper adds ([1,2],3) -> since slate size equals to 
+the actual size then [1,2] is also added to the result and returns 
+This is the case if of include 1 
+Exclude 1 case, all eccxclude and returns, 4'th includes but total lenght reached by 
+its subordinate and returns 
+3'rd one includes 3 to the slate ([3],3) -> 4'th include case ([3,4],5) -> (3,4) added 
+to the result 
+2'nd include case ([2],2) -> 3rd exclude -> 4'th include create ([2,4],5) -> (2,4) added 
+3rd include ([2,3],3) -> adds ans returns [2,3] added 
+All combinations of size are geenrated 
+
+Subset Sum problem:
+
+Same as subset but only condition is we add target to slate by subtracting 
+current value. Such that when any subordinate sees target =0 
+then it adds result to the slate and returns, back tracking happens 
+from there it finds any other combinations that leads to this 
+
+Combination sum:
+This is sum with duplicate values 
+
+Here same as subset sum but only difference is i sort numbers 
+and i am going to add repeated number equal to the number of times 
+it is present, unless sum of those numbers exceeds the target, if 
+at one point exceeds target i stop adding the numbers and 
+go the next number 
+
+For ex:
+211134 is there and target is 6:
+
+after sort numbers are: 111234 
+first i add 1 to slate and call helper to look from next number 
+after 1, i give slate position from 3 onwards. and same as subset sum 
+ideintifed and results are added 
+
+Next 11 are added to slate and call subordinate from pos=3 onwards 
+next 111 are added to slate and call subordinate from pos=3 onwards 
+
+Generate parenthesis:
+
+First i add left parenthesis and call subordinate to fill remaining 
+left and right and return  then I add right parenthesis to slate 
+and come up with all starting with right.  
+Here main point is whenever we see less left pranthesis then we must return 
+because anything with more right parenthesis is a wrong combination 
+
+Also whenever left and right parenthesis are equal to 0 then we must 
+add it as the valid combination 
+
+Also whenever we add left_parenthesis we decrement left parenthesis 
+value and we add right parenthis we decrement it 
+
+N-Queens:
+
+Here i am focusing from 0 to n coloumns 
+Always i focus on row=0 
+if i find valid position and call my subordinate for row=1 
+subordinate also tries from 0 to n coloumns.
+
+suppose subordinate able to find at row=1 valid position then 
+it calls next subordinate, if next subordinate unable to find in all
+coloumns it returns, then 1st subordinate removes the value from the 
+slate and tries from next columns where it stopped, backtrakcs from next
+coloumn. Then next coloumn it tries, if succesful then repeats same 
+
+I am focusing on row=0,col=0 to n  and my subordinate find all from row=1 and all colomns 
+and its subordinate row=2...so on..
+
+Any issue comes and returns i remove old value and try new value 
+and so on.. 
+
+Palindrome parition:
+I am going to add to slate 0:1 and call subordinate to find 
+palindrome values from 1 to len(string);
+Then i add from 0:2 and call subordinate to find all valid palindrome 
+from 2 to n 
+For ex: lets take aba 
+i add slate a and call subordinate to find palindromes in  'ba' 
+next i add to slate ab and call subordinate to find from 'b' 
+Total number of subordinates i call are:
+3 subordinates
+
+Similarly for pos=1 onwards ba its going to call 2 subordinates 
+pos-2 1 subordinate called 
+
+ex: 
+0:0 (aba, 1,[a]) -> 1:0 (aba,2,[b]) -> 2:0 (aba,3,[a]) -> add [a] 
+to result and return 
+1:1 (aba,2,[ba]) -> since ba not palindrom returns 
+
+0:1 (aba,1,[ab]) -> returns 
+0:2 (aba,1,[aba]) -> [aba] added to slate 
+
