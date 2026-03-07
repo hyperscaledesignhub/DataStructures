@@ -1,0 +1,24 @@
+letter case combination, subset generation, permutation and subset sum 
+there is no back tracking 
+
+For the case of combinations there is back tracking:
+
+What happens with back tracking?
+
+Let's see with example of combination:
+Whenever a subset slate size equal to combination size, we are adding 
+it to the result and coming back.
+
+for ex: let's take numbers 1234 
+include and exclude case:
+i am calling exclusive, 0:1 ([],pos=1) -> 1:0 ([],pos=2)-> 2:0 ([],pos=3) -> return 
+2:1 ([3],pos=3) -> 3:0 return since i reached max slate length 
+now 1:1 ([2],pos=2) -> 2:0 ([2],pos=3) -> 3:0 return max lenght reached 
+2:1 ([2,3],pos=3) -> result added size=2 return 
+0:2 ([1],pos=1) -> 1:0 ([1])
+That means suppose i call my subordinate and it returns immediately 
+because one of the conditions satisfied instead of going through full
+cycle of regular path until slate position reaches its length 
+
+Indirectly one of subordinates returned immediately without going to
+full cycle. 
