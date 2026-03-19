@@ -1,0 +1,11 @@
+Here first we are adding '(' to the slate and calling subordinate to 
+find all the cases that are starting with '(' 
+Then we are calling subordinate by adding ')' to the slate. Such that all the
+values ending with the ) could be found 
+
+Whenever left and right parenthesis counts are equal then we are adding the result
+
+Whenever left parenthesis count greater then right that means more right parenthesis 
+values are there, then we are returning to the parent
+
+
