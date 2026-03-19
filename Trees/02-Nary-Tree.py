@@ -7,7 +7,7 @@ def level_order(root:BinaryTree):
     q= collections.deque([root])
     result=[]
     while len(q) !=0:
-        size = len(q)x``
+        size = len(q)
         temp=[]
         while size > 0:
             node = q.popleft()
