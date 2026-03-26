@@ -5,9 +5,6 @@
 #For each type we need to create and evaluate them based on precedence
 #For creation we use recursion
 #We have4 symbols-> +, -, *,/ 
-#First 2 numbers num1,num2 -> give to symbol-1 -> output of it, out-1 we give to 
-#symbol-2 along with a new number num3, output of both out-2 and num4 
-#we give to symbol-3, output of both out-3 and num5 we give to symbol-4
 def expression_eval(target:int):
     result=[]
     def evaluate_expr(num1:int,num2:int,expr:str):
@@ -20,33 +17,35 @@ def expression_eval(target:int):
             case '*':
                 r[0] = num1*num2
             case '/':
-                if num2 !=0: 
+                if num2 != 0 and num1 % num2 == 0:  
                     r[0] = num1//num2
+                else:
+                    return -1
+                
         return r[0]
             
-    def helper(num1:int,num2:int,expr:str,slate:list[str],target_value:int):
-        value= evaluate_expr(num1,num2,expr)
-        print(f"value is {value}")
-        if value > target_value or value < 0:
-            return
-        if num1 > target_value or num2 > target_value:
-            return
-        if expr!='z':
-            slate.append( " + ("+ str(num1) + ")" + expr + "("+ str(num2) + ")" )
-        #print(f"slate is {slate}")
-        if value == target_value:
+    def helper(output:int,num1:int,slate:list[str]):
+        if output == target:
             result.append(slate[:])
-            #print(f"result is {result} ")
             return
-        new_target=target_value-value
-        helper(num1+1,num2+1,'+',slate,new_target)
-        helper(num1+1,num2+1,"-",slate,new_target)
-        helper(num1+1,num2+1,'/',slate,new_target)
-        helper(num1+1,num2+1,"*",slate,new_target)
-        if expr !='z':
+        if num1 > target or output < 0:
+            return
+        for op in ['+','-','*','/']:
+            if op == '/' and num1 == 0:
+                continue
+            val=evaluate_expr(output,num1,op)
+            if val < 0 or val == 0:          # subtraction went negative, skip                                                  
+                continue
+            if op in ['+', '*'] and val > target:   # growing too large, skip                                       
+                continue    
+            st=str(output) + op + str(num1)
+            slate.append(st)
+            #print(f"slate is {slate}")
+            helper(val,num1+1,slate)
             slate.pop()
-    helper(0,0,"z",[],target)
+    helper(1,2,['1'])
     return result
+            
 r=expression_eval(16)
 print(f" Result of expression is {r}")
         
