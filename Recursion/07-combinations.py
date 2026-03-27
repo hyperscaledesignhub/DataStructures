@@ -18,3 +18,6 @@ def combinations(n:int,k:int):
 li=[1,2,3,4]
 r=combinations(4,2)
 print(f"Combination of {li} is {r}")
+
+r=combinations(5,3)
+print(f"Combination of {li} is {r}")
