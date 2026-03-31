@@ -94,7 +94,7 @@ Now 1->2:2 adds B (B,i=2) calls 2
 2->3:1 adds nothing to slate and calls 3 (B,i=3), this returns back at second base condition 
 After that 2->3:2 adds second element to slate (BC,i=3) calls 3, since length of 
 the slate is 2 it is added to the result and comes back 
-Similary all others are also happen
+Similary all others are also happen 
 
 
 
