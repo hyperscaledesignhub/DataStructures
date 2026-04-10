@@ -22,7 +22,7 @@ def letter_combination(digits:str):
             helper(index+1,current_combination+letter)
     helper(0,"")
     return result
-dts='23'
+dts='234'
 r=letter_combination(dts)
 print(f"value of result is {r}")
 
